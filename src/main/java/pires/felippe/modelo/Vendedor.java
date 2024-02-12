@@ -10,7 +10,6 @@ import java.util.Map;
 public class Vendedor extends Funcionario implements FuncionarioComBeneficio {
     private final BigDecimal salario = new BigDecimal("12000");
     private final Double beneficio = 0.3;
-
     Map<String, BigDecimal> vendasNoMes = new HashMap<>();
 
     public Vendedor (String nome, String anoContratacao, Cargo cargo) {
@@ -39,11 +38,20 @@ public class Vendedor extends Funcionario implements FuncionarioComBeneficio {
         return BigDecimal.ZERO;
     }
 
-
+    /**
+     * Registra as vendas realizadas pelo vendedor em um determinado mês.
+     * @param data A data do mês das vendas.
+     * @param valor O valor total das vendas no mês.
+     */
     public void cadastrarVendas(String data, BigDecimal valor) {
         vendasNoMes.put(data, valor);
     }
 
+    /**
+     * Busca as vendas realizadas pelo vendedor em um determinado mês.
+     * @param data A data do mês das vendas.
+     * @return Um mapa contendo as vendas realizadas pelo vendedor no mês especificado.
+     */
     public Map<String, BigDecimal> buscarVendas(String data) {
         Map<String, BigDecimal> vendasNoMes = this.vendasNoMes;
         if (vendasNoMes.get(data) == null) {
